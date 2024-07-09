@@ -3,20 +3,24 @@
 A simple telegram bot for monitoring the health of websites and sending notifications if any went down or up.
 
 ## Features
-- Monitors multiple websites at regular intervals.
-- Send notifications to telegram chat if any website went down or up.
-- Sends a regular self-check message to the chat.
-- /health endpoint for health checking the health checker.
+
+-   Monitors multiple websites at regular intervals.
+-   Send notifications to telegram chat if any website went down or up.
+-   Sends a regular self-check message to the chat.
+-   /health endpoint for health checking the health checker.
 
 ## Configuration
+
 Getting telegram bot parameters:
-- Create a telegram bot using the [BotFather](https://core.telegram.org/bots#botfather).
-- Get the chat id of the chat where you want to receive notifications.
-- Set following environment variables:
-    - `BOT_TOKEN`
-    - `CHAT_ID`
+
+-   Create a telegram bot using the [BotFather](https://core.telegram.org/bots#botfather).
+-   Get the chat id of the chat where you want to receive notifications.
+-   Set following environment variables:
+    -   `BOT_TOKEN`
+    -   `CHAT_ID`
 
 Settings via environment variables:
+
 ```conf
 # Comma-separated list of sites to check
 SITES=https://github.com,https://telegram.org
@@ -41,4 +45,5 @@ TEMPLATE_ALIVE_SELF=🔵 I'm alive and well!
 ```
 
 ## Usage
-Configure as described above, run `npm install` and `npm start`. No external services are required, so you can simply deploy it to Vercel or any other platform.
+
+Configure as described above, run `npm install` and `npm start`. No external services are required, so you can simply deploy it to [render.com](https://render.com), [heroku](https://heroku.com) or any other platform that supports node.js (express) apps.
