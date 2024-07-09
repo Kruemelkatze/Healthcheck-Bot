@@ -1,0 +1,16 @@
+{
+  "name": "healthcheck-telegram-bot",
+  "version": "1.0.0",
+  "description": "A simple telegram bot for monitoring the health of websites and sending notifications if any went down or up.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3"
+  }
+}
