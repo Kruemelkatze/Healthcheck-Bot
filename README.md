@@ -2,6 +2,8 @@
 
 A simple telegram bot for monitoring the health of websites and sending notifications if any went down or up.
 
+![Notification of the healthcheck botin Telegram chat](images/chat.webp)
+
 ## Features
 
 -   Monitors multiple websites at regular intervals.
