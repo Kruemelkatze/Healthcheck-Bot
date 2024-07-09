@@ -14,7 +14,7 @@ const STRICT_DOWN_CHECK = process.env.STRICT_DOWN_CHECK || 'false';
 
 const HEALTHCHECK_ENDPOINT = process.env.HEALTHCHECK_ENDPOINT || '/health';
 const HEALTHCHECK_ENDPOINT_ENABLED = process.env.HEALTHCHECK_ENDPOINT_ENABLED === 'true';
-const HEALTHCHECK_PORT = process.env.HEALTHCHECK_PORT || 80;
+const PORT = process.env.PORT || 3000;
 
 const BOT_TOKEN = process.env.BOT_TOKEN || 'your_telegram_bot_token';
 const CHAT_ID = process.env.CHAT_ID || 'your_telegram_chat_id';
@@ -208,8 +208,8 @@ if (HEALTHCHECK_ENDPOINT_ENABLED) {
         res.send('Good');
     });
 
-    app.listen(HEALTHCHECK_PORT, () => {
-        console.log(`Healthcheck endpoint is running on port ${HEALTHCHECK_PORT} at ${HEALTHCHECK_ENDPOINT}`);
+    app.listen(PORT, () => {
+        console.log(`Healthcheck endpoint is running on port ${PORT} at ${HEALTHCHECK_ENDPOINT}`);
     });
 } else {
     console.log('Healthcheck endpoint is disabled.');
