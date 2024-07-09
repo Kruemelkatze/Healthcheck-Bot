@@ -26,8 +26,9 @@ Settings via environment variables:
 ```conf
 # Comma-separated list of sites to check
 SITES=https://github.com,https://telegram.org
-# Interval in minutes
+# Interval in minutes for checking if sites went down.
 INTERVAL=30
+# Interval in minutes for checking if sites known to be down are up again.
 NERVOUS_INTERVAL=1
 # Cron: Every monday at 09:00
 CRON_ALIVE_SELF=0 9 * * 1
