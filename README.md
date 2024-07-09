@@ -23,7 +23,7 @@ Getting telegram bot parameters:
 
 Settings via environment variables:
 
-```conf
+```env
 # Comma-separated list of sites to check
 SITES=https://github.com,https://telegram.org
 # Interval in minutes for checking if sites went down.
