@@ -6,6 +6,7 @@ A simple telegram bot for monitoring the health of websites and sending notifica
 - Monitors multiple websites at regular intervals.
 - Send notifications to telegram chat if any website went down or up.
 - Sends a regular self-check message to the chat.
+- /health endpoint for health checking the health checker.
 
 ## Configuration
 Getting telegram bot parameters:
@@ -26,6 +27,10 @@ NERVOUS_INTERVAL=1
 CRON_ALIVE_SELF=0 9 * * 1
 # If set to true, a site is not considered down if we get a 3xx, 4xx, or 5xx status code.
 STRICT_DOWN_CHECK=false
+# Healthcheck Endpoint
+HEALTHCHECK_ENDPOINT=/health
+HEALTHCHECK_ENDPOINT_ENABLED=true
+HEALTHCHECK_PORT=80
 # Bot settings
 BOT_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 CHAT_ID=XXXXXXXXXXXXX

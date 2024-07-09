@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const axios = require('axios');
 const cron = require('node-cron');
+const express = require('express');
 
 dotenv.config();
 
@@ -10,6 +11,10 @@ const INTERVAL = process.env.INTERVAL || '30';
 const NERVOUS_INTERVAL = process.env.NERVOUS_INTERVAL || '1';
 const CRON_ALIVE_SELF = process.env.CRON_ALIVE_SELF || '0 9 * * 1';
 const STRICT_DOWN_CHECK = process.env.STRICT_DOWN_CHECK || 'false';
+
+const HEALTHCHECK_ENDPOINT = process.env.HEALTHCHECK_ENDPOINT || '/health';
+const HEALTHCHECK_ENDPOINT_ENABLED = process.env.HEALTHCHECK_ENDPOINT_ENABLED === 'true';
+const HEALTHCHECK_PORT = process.env.HEALTHCHECK_PORT || 80;
 
 const BOT_TOKEN = process.env.BOT_TOKEN || 'your_telegram_bot_token';
 const CHAT_ID = process.env.CHAT_ID || 'your_telegram_chat_id';
@@ -194,6 +199,22 @@ if (!cron.validate(CRON_ALIVE_SELF)) {
         await sendTelegramMessage(TEMPLATE_ALIVE_SELF);
     });
 }
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~ Healthcheck and Startup ~~~~~~~~~~~~~~~~~~~~~~~~
+if (HEALTHCHECK_ENDPOINT_ENABLED) {
+    const app = express();
+    app.get(HEALTHCHECK_ENDPOINT, (req, res) => {
+        res.send('Good');
+    });
+
+    app.listen(HEALTHCHECK_PORT, () => {
+        console.log(`Healthcheck endpoint is running on port ${HEALTHCHECK_PORT} at ${HEALTHCHECK_ENDPOINT}`);
+    });
+} else {
+    console.log('Healthcheck endpoint is disabled.');
+}
+
 
 // Initial checks
 checkSitesAndNotify();
